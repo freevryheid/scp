@@ -23,6 +23,8 @@ from django.urls import include, path
 from blog.sitemaps import PostSitemap
 from django.contrib import admin
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 sitemaps = {
     "posts": PostSitemap,
 }
@@ -34,6 +36,8 @@ urlpatterns = [
 #    path('__debug__/', include(debug_toolbar.urls)),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

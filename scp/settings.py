@@ -21,13 +21,17 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_-fvw@1pus1%7v9u6d&2*350^npw+(r^8#kp)shr+v_-8dd6ze'
+#SECRET_KEY = 'django-insecure-_-fvw@1pus1%7v9u6d&2*350^npw+(r^8#kp)shr+v_-8dd6ze'
+
+with open('django_key.txt') as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '139.144.34.253', 'www.safercityproject.charity', 'safercityproject.charity']
 
 # Application definition
 
@@ -59,9 +63,9 @@ MIDDLEWARE = [
 ROOT_URLCONF = "scp.urls"
 
 # Django Debug Toolbar https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+#INTERNAL_IPS = [
+#    '127.0.0.1',
+#]
 
 TEMPLATES = [
     {
@@ -131,7 +135,8 @@ STATIC_URL = "/static/"
 # Location of static files
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
+# STATIC_ROOT = '/srv/http/scp/static'
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
